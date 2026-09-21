@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">My Application</string>
+
+    <!-- 存款利息计算器 -->
+    <string name="title">存款利息计算器</string>
+    <string name="label_principal">本金（元）</string>
+    <string name="hint_principal">例如 10000</string>
+    <string name="label_rate">年利率（%）</string>
+    <string name="hint_rate">例如 2.75</string>
+    <string name="label_years">存期（年）</string>
+    <string name="hint_years">例如 3</string>
+    <string name="btn_calc">计 算</string>
+    <string name="empty_result">请输入本金、年利率和存期，然后点击“计算”。</string>
+    <string name="err_empty">三项都要填写</string>
+    <string name="err_input">请输入正确的数字</string>
+    <string name="err_range">本金和存期要大于 0，年利率不能为负</string>
+    <string name="calc_done">计算完成</string>
+</resources>
