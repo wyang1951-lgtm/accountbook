@@ -1,114 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-    存款利息计算器 —— 界面布局
-    根布局使用 ConstraintLayout（课件 3.3.7），里面嵌套 ScrollView + LinearLayout（课件 3.3.1）
--->
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="#F2F4F8"
+    android:fillViewport="true">
 
-    <ScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- 姓名学号：静态写死，运行时不可修改 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:text="@string/my_info"
+            android:textColor="#5B6472"
+            android:textSize="13sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:paddingBottom="14dp"
+            android:text="@string/title_add"
+            android:textColor="#1F2A37"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/bg_card"
             android:orientation="vertical"
-            android:padding="24dp">
+            android:padding="16dp">
 
-            <!-- ===== 标题 ===== -->
-            <TextView
-                android:id="@+id/tvTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                android:gravity="center"
-                android:text="@string/title"
-                android:textColor="?attr/colorPrimary"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-            <!-- ===== 本金 ===== -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/label_principal"
-                android:textSize="15sp" />
+            <!-- 金额 -->
+            <TextView style="@style/LabelText" android:text="@string/label_amount" />
 
             <EditText
-                android:id="@+id/etPrincipal"
+                android:id="@+id/etAmount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:hint="@string/hint_principal"
-                android:importantForAutofill="no"
+                android:text="35.50"
+                android:hint="@string/hint_amount"
                 android:inputType="numberDecimal"
+                android:maxLines="1"
                 android:textSize="16sp" />
 
-            <!-- ===== 年利率 ===== -->
-            <TextView
+            <!-- 类别：Spinner 备选控件 1 -->
+            <TextView style="@style/LabelText" android:text="@string/label_category" />
+
+            <Spinner
+                android:id="@+id/spCategory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/label_rate"
-                android:textSize="15sp" />
+                android:minHeight="44dp" />
+
+            <!-- 日期：DatePicker 备选控件 2 -->
+            <TextView style="@style/LabelText" android:text="@string/label_date" />
+
+            <DatePicker
+                android:id="@+id/dpDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:datePickerMode="spinner"
+                android:calendarViewShown="false" />
+
+            <!-- 收支类型：RadioGroup 备选控件 3 -->
+            <TextView style="@style/LabelText" android:text="@string/label_type" />
+
+            <RadioGroup
+                android:id="@+id/rgType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rbExpense"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="@string/type_expense" />
+
+                <RadioButton
+                    android:id="@+id/rbIncome"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/type_income" />
+            </RadioGroup>
+
+            <!-- 固定支出：CheckBox 备选控件 4 -->
+            <CheckBox
+                android:id="@+id/cbFixed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/label_fixed" />
+
+            <!-- 备注 -->
+            <TextView style="@style/LabelText" android:text="@string/label_note" />
 
             <EditText
-                android:id="@+id/etRate"
+                android:id="@+id/etNote"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:hint="@string/hint_rate"
-                android:importantForAutofill="no"
-                android:inputType="numberDecimal"
+                android:hint="@string/hint_note"
+                android:inputType="text"
+                android:maxLines="1"
                 android:textSize="16sp" />
-
-            <!-- ===== 存期 ===== -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/label_years"
-                android:textSize="15sp" />
-
-            <EditText
-                android:id="@+id/etYears"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                android:hint="@string/hint_years"
-                android:importantForAutofill="no"
-                android:inputType="numberDecimal"
-                android:textSize="16sp" />
-
-            <!-- ===== 计算按钮 ===== -->
-            <Button
-                android:id="@+id/btnCalc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/btn_calc"
-                android:textSize="16sp" />
-
-            <!-- ===== 结果显示 ===== -->
-            <TextView
-                android:id="@+id/tvResult"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:background="@drawable/bg_result"
-                android:lineSpacingExtra="6dp"
-                android:padding="16dp"
-                android:text="@string/empty_result"
-                android:textSize="16sp" />
-
         </LinearLayout>
-    </ScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#2F6FED"
+            android:text="@string/btn_save"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btnGoList"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#E6ECF8"
+            android:text="@string/btn_go_list"
+            android:textColor="#2F6FED"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+</ScrollView>

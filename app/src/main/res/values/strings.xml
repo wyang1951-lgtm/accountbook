@@ -1,18 +1,31 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">个人记账本</string>
 
-    <!-- 存款利息计算器 -->
-    <string name="title">存款利息计算器</string>
-    <string name="label_principal">本金（元）</string>
-    <string name="hint_principal">例如 10000</string>
-    <string name="label_rate">年利率（%）</string>
-    <string name="hint_rate">例如 2.75</string>
-    <string name="label_years">存期（年）</string>
-    <string name="hint_years">例如 3</string>
-    <string name="btn_calc">计 算</string>
-    <string name="empty_result">请输入本金、年利率和存期，然后点击“计算”。</string>
-    <string name="err_empty">三项都要填写</string>
-    <string name="err_input">请输入正确的数字</string>
-    <string name="err_range">本金和存期要大于 0，年利率不能为负</string>
-    <string name="calc_done">计算完成</string>
+    <!-- 静态写死的个人信息：所有页面共用，运行时不可编辑 -->
+    <string name="my_info">冯玉晨　2406100209　计算机242班</string>
+
+    <!-- 页面 1：记一笔 -->
+    <string name="title_add">记一笔</string>
+    <string name="label_amount">金额（元）</string>
+    <string name="hint_amount">例如 35.50</string>
+    <string name="label_category">类别</string>
+    <string name="label_date">日期</string>
+    <string name="label_type">类型</string>
+    <string name="type_expense">支出</string>
+    <string name="type_income">收入</string>
+    <string name="label_fixed">标记为固定支出（房租、话费等）</string>
+    <string name="label_note">备注</string>
+    <string name="hint_note">例如 和同学吃午饭</string>
+    <string name="btn_save">保存并查看账单</string>
+    <string name="btn_go_list">直接查看账单</string>
+
+    <!-- 页面 2：账单列表 -->
+    <string name="title_list">我的账单</string>
+    <string name="btn_back">返回</string>
+    <string name="btn_delete">删除这条记录</string>
+    <string name="sum_income">总收入</string>
+    <string name="sum_expense">总支出</string>
+    <string name="sum_balance">结余</string>
+    <string name="hint_default">还没有新记录</string>
+    <string name="empty_list">还没有任何记录\n回到上一页记一笔吧</string>
 </resources>
